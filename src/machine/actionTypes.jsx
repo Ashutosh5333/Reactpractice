@@ -1,0 +1,7 @@
+export const  INCRESCOUNT = "INCRESCOUNT"
+
+
+
+export const  LOGINREQ = "LOGINREQ"
+export const  LOGINSUCESS = "LOGINSUCESS"
+export const  LOGINREFAILURE = "LOGINREFAILURE"
