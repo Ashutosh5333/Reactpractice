@@ -5,6 +5,8 @@ const Home = lazy(() => import("./Home"));
 const About = lazy(() => import("./About"));
 
 const Lazyoptimise = () => {
+
+  
   return (
     <div>
       <h1> LAzyyyyy loading </h1>

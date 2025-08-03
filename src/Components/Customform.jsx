@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 const Customform = () => {
   const [data, setData] = useState([]);
@@ -7,12 +7,8 @@ const Customform = () => {
     age: "",
     skill: "",
   });
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   age: "",
-  //   skill: "",
-  // });
 
+  // Debounce function
   const debounce = (func, delay) => {
     let timeoutId;
     return (...args) => {
@@ -23,48 +19,49 @@ const Customform = () => {
     };
   };
 
-  // const debouncedSetFormData = debounce((newFormData) => {
-  //   setFormData(newFormData);
-  // }, 1000); // Adjust the delay (300 milliseconds) based on your preference
-
-     console.log("formdata",inputValues)
-     const handleInputChange = (e) => {
+  // Debounced version of setInputValues
+  const debouncedSetInputValues = useCallback(
+    debounce((newInput) => {
+      setInputValues(newInput);
+    }, 100),
+    [] // debounce should only be created once
+  );
+  console.log("inputValues------>", inputValues);
+  const handleInputChange = useCallback(
+    (e) => {
       const { name, value } = e.target;
-      setInputValues({ ...inputValues, [name]: value });
-      }
-
-  // const handleInputChange = useCallback((e) => {
-  //   const { name, value } = e.target;
-  //   setInputValues((prevInputValues) => ({ ...prevInputValues, [name]: value }));
-  //   debouncedSetFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  // }, [debouncedSetFormData]);
+      const updatedForm = { ...inputValues, [name]: value };
+      debouncedSetInputValues(updatedForm);
+    },
+    [inputValues, debouncedSetInputValues]
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setData([...data, inputValues]);
-    setInputValues({ name: "", age: "", skill: "" }); // Clear input values after submitting
+    setInputValues({ name: "", age: "", skill: "" }); // Clear form
   };
 
-  const handleDelete = (i) => {
-    const updatedData = data.filter((item, index) => i !== index);
+  const handleDelete = (index) => {
+    const updatedData = data.filter((_, i) => i !== index);
     setData(updatedData);
   };
 
-  const totalAge = data.reduce((acc, el) => acc + Number(el.age), 0);
+  const totalAge = data.reduce((sum, item) => sum + Number(item.age || 0), 0);
 
   return (
     <>
-      All User Age: {totalAge}
+      <h3>All User Age: {totalAge}</h3>
+
       <ul>
-        {data.length > 0 &&
-          data.map((item, i) => (
-            <div key={i}>
-              <li>Name: {item.name}</li>
-              <li>Age: {item.age}</li>
-              <li>Skill: {item.skill}</li>
-              <button onClick={() => handleDelete(i)}>Delete</button>
-            </div>
-          ))}
+        {data.map((item, index) => (
+          <div key={index}>
+            <li>Name: {item.name}</li>
+            <li>Age: {item.age}</li>
+            <li>Skill: {item.skill}</li>
+            <button onClick={() => handleDelete(index)}>Delete</button>
+          </div>
+        ))}
       </ul>
 
       <form onSubmit={handleSubmit}>
@@ -110,8 +107,6 @@ const Customform = () => {
 export default Customform;
 
 // export default memo(Customform);
-
-
 // import React, { useCallback, useState } from "react";
 
 // const Customform = () => {

@@ -7,9 +7,10 @@ import ContextProvider from "./ContextApi/ContextProvider.jsx";
 import MachineProvider from "./machine/MachineProvider.jsx";
 import { Provider } from "react-redux";
 // import { store } from "./machine/store.jsx";
-import {store} from "./Redux/store.jsx"
+// import {store} from "./Redux/store.jsx"
 import ErrorBoundary from "./Errorboundry/ErrorBoundary.jsx";
 // console.log("storee",store)
+import {store} from "./Newredux/store.jsx"
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(

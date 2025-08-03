@@ -14,6 +14,7 @@ const CounterApp = () => {
     console.log('Calculating squared value...');
     return counter ** 2;
   }, [counter]);
+
   //  console.log("counter",counter)
   //  performance inhance karne ke liye use hota 
   //  useMemo() returns a memoized value. This means that React will only re-evaluate
