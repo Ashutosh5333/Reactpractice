@@ -43,14 +43,13 @@ const FormWithRef = () => {
     // Do something with the form data
     console.log("Name:", nameValue);
     console.log("Email:", emailValue);
-
     // You can perform additional actions here, such as making API calls or updating state
   };
 
   return (
     <>
       <p>Ref Count: {countRef.current}</p> {/* UI won't update */}
-      {/* <button onClick={handleClick}>Increment</button> */}
+      <button onClick={handleClick}>Increment</button>
       <p>Clicked: {count}</p>
       <p>Component re-rendered: {countRef.current} times</p>
       <button onClick={() => setCount((c) => c + 1)}>Click</button>

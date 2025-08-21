@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Lazyoptimise from "./Components/Lazyoptimise";
 import FormWithRef from "./Components/useref/Reffrom";
-import { Box } from "./Components/UselayoutEffect/Box";
-import { Example } from "./Components/UselayoutEffect/ExampleToop";
-import { PaintVisualizer } from "./Components/UselayoutEffect/PaintVisualizer";
-import CounterExample from "./Components/counterExample/CounterExample";
-import PraticeExample from "./SaberNotion/PraticeExample";
-import MachinePratice from "./machine/MachinePratice";
-import Customform from "./Components/Customform";
-import Stopwatch from "./Components/Stopwatch";
+
 
 const App = () => {
   const [state, setState] = useState(0);
@@ -40,6 +33,11 @@ const App = () => {
       {/* <PraticeExample/> */}
       {/* <MachinePratice/> */}
       {/* <Stopwatch/> */}
+
+      {/* <ToastNotificationDemo/> */}
+      {/* <Parent/> */}
+
+      <FormWithRef/>
 
 
     </>
