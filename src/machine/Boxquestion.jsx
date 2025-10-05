@@ -7,7 +7,6 @@ const Boxquestion = () => {
     const [clickedBoxes, setClickedBoxes] = useState([]);
       
     
-    
     const changeColor = (index) => {
         if (boxes[index] !== 'green') {
           let updatedBoxes = [...boxes];

@@ -6,10 +6,9 @@ const Showdata = () => {
     const count = useSelector((state) =>console.log("state",state))
     const dispatch = useDispatch()
       
-       const hadlefetch = () =>{
+       const hadlefetch = () => {
           dispatch(getData)
        }
-       
 
 
   return (

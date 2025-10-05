@@ -28,13 +28,14 @@ const useCachedFetch = (url) => {
         setError(err.message);
       } finally {
         setLoading(false);
-      }
-    };
+      };
+    }
+    ;
 
     fetchData();
   }, [url]);
 
-  return { data, loading, error };
-};
+  return { data, loading, error } ;
+} ;
 
 export default useCachedFetch;
